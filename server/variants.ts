@@ -5,7 +5,7 @@ import type { Variant } from '../shared/types.js';
 export function reconcileVariants(current: Variant[], archived: Variant[], selected: string[]) {
   const saved = new Map([...archived, ...current].map(variant => [variant.buyerId, variant]));
   const variants: Variant[] = selected.map(buyerId => saved.get(buyerId) || {
-    id: randomUUID(), buyerId, title: '', description: '', originalTitle: '', originalDescription: '', favorite: false, status: 'pending', provider: 'template',
+    id: randomUUID(), buyerId, title: '', description: '', originalTitle: '', originalDescription: '', favorite: false, status: 'pending', provider: 'template', imageStatus: 'pending',
   });
   const active = new Set(selected);
   return { variants, archivedVariants: [...saved.values()].filter(variant => !active.has(variant.buyerId)) };

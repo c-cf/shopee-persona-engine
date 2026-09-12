@@ -3,8 +3,8 @@ export type Status = 'pending' | 'running' | 'complete' | 'failed';
 export interface Product { title: string; description: string; price: number | null; image: string; url: string; demo: boolean }
 export interface BuyerEvidence { source: 'user-provided-summary'; scope: 'single-representative-product'; matchedReviews: number; verifiedPurchases: number; note: string }
 export interface Buyer { id: string; group: Group; name: string; context: string; need: string; angle: string; hook: string; objection: string; positioning?: 'Missed Buyer'; evidence?: BuyerEvidence }
-export interface Variant { id: string; buyerId: string; title: string; description: string; originalTitle: string; originalDescription: string; favorite: boolean; status: Status; error?: string; provider: 'template' | 'model' }
-export interface Project { id: string; product: Product; buyers: Buyer[]; selected: string[]; variants: Variant[]; archivedVariants?: Variant[]; engines: Record<Group, Status>; phase: 'analyzing' | 'audiences' | 'generating' | 'previews'; createdAt: number; expiresAt: number; generationMode: 'template' | 'model' }
+export interface Variant { id: string; buyerId: string; title: string; description: string; originalTitle: string; originalDescription: string; favorite: boolean; status: Status; error?: string; provider: 'template' | 'model'; imageUrl?: string; imageStatus?: Status | 'disabled'; imageError?: string; imageModel?: string }
+export interface Project { id: string; product: Product; buyers: Buyer[]; selected: string[]; variants: Variant[]; archivedVariants?: Variant[]; engines: Record<Group, Status>; phase: 'analyzing' | 'audiences' | 'generating' | 'previews'; createdAt: number; expiresAt: number; generationMode: 'template' | 'model'; imageGenerationMode?: 'model' | 'disabled' }
 export const GROUPS: { id: Group; name: string; subtitle: string; letter: string }[] = [
   { id: 'core', name: '核心受眾', subtitle: '從商品用途，找到直接契合的需求', letter: 'A' },
   { id: 'market', name: '需求延伸', subtitle: '換個使用角度，發現遺漏的需求', letter: 'B' },

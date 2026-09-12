@@ -1,13 +1,18 @@
-import 'dotenv/config';
+import { config } from 'dotenv';
 import express from 'express';
 import { z } from 'zod';
 import * as cheerio from 'cheerio';
-import { mkdir, readFile, writeFile, rename } from 'node:fs/promises';
+import { mkdir, readFile, writeFile, rename, readdir, unlink } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { randomUUID } from 'node:crypto';
 import type { Project, Product, Group } from '../shared/types.js';
-import { buildBuyers, defaultSelection, generateCopy, isHeadphoneDemo, validateSelection } from './engine.js';
+import { buildBuyers, defaultSelection, isHeadphoneDemo, validateSelection } from './engine.js';
 import { reconcileVariants } from './variants.js';
+import { generateVariant, needsGeneration } from './generation.js';
+import { imageFilePath, imageGenerationEnabled, imageModel, imageUrlFor, isImageId } from './images.js';
+
+// Explicit project settings take priority over credentials inherited from the launcher.
+config({ override: true, quiet: true });
 
 const app = express();
 app.use(express.json({ limit: '3mb' }));
@@ -22,6 +27,7 @@ type Stored = Project & { owner: string; selectionEdited?: boolean };
 const projects = new Map<string, Stored>();
 const dataDir = resolve('.data');
 const dataFile = resolve(dataDir, 'projects.json');
+const imageDirectory = resolve(dataDir, 'images');
 await mkdir(dataDir, { recursive: true });
 try {
   for (const project of JSON.parse(await readFile(dataFile, 'utf8')) as Stored[]) {
@@ -36,7 +42,15 @@ function persist() {
   }).catch(error => console.error('Could not save project:', error));
   return saveQueue;
 }
-const publicProject = ({ owner: _owner, ...project }: Stored) => project;
+const publicProject = ({ owner: _owner, ...project }: Stored) => ({ ...project, imageGenerationMode: imageGenerationEnabled() ? 'model' : 'disabled' });
+async function cleanExpiredImages() {
+  const retained = new Set([...projects.values()].flatMap(project => [...project.variants, ...(project.archivedVariants || [])].map(variant => `${variant.id}.png`)));
+  try {
+    for (const name of await readdir(imageDirectory)) {
+      if (name.endsWith('.png') && isImageId(name.slice(0, -4)) && !retained.has(name)) await unlink(imageFilePath(imageDirectory, name.slice(0, -4)));
+    }
+  } catch (error) { if ((error as NodeJS.ErrnoException).code !== 'ENOENT') console.error('Could not clean expired images.'); }
+}
 const running = new Set<string>();
 const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 async function analyze(project: Stored) {
@@ -63,23 +77,28 @@ async function generate(project: Stored) {
   generating.add(project.id);
   try {
     for (const variant of project.variants) {
-      if (variant.status === 'complete') continue;
-      variant.status = 'running'; delete variant.error; await persist();
-      try {
-        const buyer = project.buyers.find(b => b.id === variant.buyerId)!;
-        const copy = await generateCopy(project.product, buyer);
-        variant.title = copy.title; variant.description = copy.description;
-        variant.originalTitle = copy.title; variant.originalDescription = copy.description;
-        variant.provider = copy.provider; variant.status = 'complete';
-        if (copy.provider === 'template') await wait(180);
-      } catch { variant.status = 'failed'; variant.error = '這個版本未完成，請重試。'; }
-      await persist();
+      if (project.expiresAt <= Date.now()) break;
+      if (!needsGeneration(variant, imageGenerationEnabled())) continue;
+      const buyer = project.buyers.find(b => b.id === variant.buyerId)!;
+      await generateVariant(project.product, buyer, variant, project.id, imageDirectory, persist);
     }
     project.phase = 'previews';
   } finally { generating.delete(project.id); await persist(); }
 }
 
-app.get('/api/health', (_req, res) => res.json({ ok: true, audienceMode: 'demo', generationMode: process.env.OPENROUTER_API_KEY ? 'model' : 'template' }));
+app.get('/api/health', (_req, res) => res.json({ ok: true, audienceMode: 'demo', generationMode: process.env.OPENROUTER_API_KEY ? 'model' : 'template', imageGenerationMode: imageGenerationEnabled() ? 'model' : 'disabled', imageModel: imageModel() }));
+// Shareable image URLs contain random IDs, never a workspace key. Expire with the project.
+app.get('/api/images/:projectId/:variantId.png', (req, res) => {
+  const { projectId, variantId } = req.params;
+  const project = projects.get(projectId);
+  const variant = project && [...project.variants, ...(project.archivedVariants || [])].find(value => value.id === variantId);
+  if (!isImageId(projectId) || !isImageId(variantId) || !project || project.expiresAt <= Date.now() || variant?.imageUrl !== imageUrlFor(projectId, variantId)) {
+    res.status(404).json({ error: '圖片不存在或已到期。' }); return;
+  }
+  res.setHeader('Cache-Control', 'no-store');
+  res.setHeader('Referrer-Policy', 'no-referrer');
+  res.sendFile(imageFilePath(imageDirectory, variantId), { dotfiles: 'allow' }, error => { if (error && !res.headersSent) res.status(404).json({ error: '圖片不存在或已到期。' }); });
+});
 app.post('/api/parse', async (req, res) => {
   const input = z.object({ url: z.string().url().max(2000) }).safeParse(req.body);
   if (!input.success) { res.status(400).json({ error: '請貼上完整的 Shopee 商品網址。' }); return; }
@@ -134,13 +153,13 @@ app.post('/api/projects/:id/generate', async (req, res) => {
   const project = res.locals.project as Stored;
   const result = z.object({ selected: z.array(z.string()) }).safeParse(req.body);
   if (!result.success || !validateSelection(project.buyers, result.data.selected)) { res.status(400).json({ error: '請選擇 5–10 個不同的受眾方向。' }); return; }
-  if (generating.has(project.id) || project.phase === 'generating') { res.status(409).json({ error: '這批文案仍在生成，完成後即可套用新的受眾選擇。' }); return; }
+  if (generating.has(project.id) || project.phase === 'generating') { res.status(409).json({ error: '這批文案與圖片仍在生成，完成後即可套用新的受眾選擇。' }); return; }
   project.selected = result.data.selected;
   project.selectionEdited = true;
   Object.assign(project, reconcileVariants(project.variants, project.archivedVariants || [], project.selected));
-  const needsGeneration = project.variants.some(variant => variant.status !== 'complete');
-  project.phase = needsGeneration ? 'generating' : 'previews'; await persist();
-  res.json(publicProject(project)); if (needsGeneration) void generate(project);
+  const pending = project.variants.some(variant => needsGeneration(variant, imageGenerationEnabled()));
+  project.phase = pending ? 'generating' : 'previews'; await persist();
+  res.json(publicProject(project)); if (pending) void generate(project);
 });
 app.patch('/api/projects/:id/selection', async (req, res) => {
   const project = res.locals.project as Stored;
@@ -158,7 +177,7 @@ app.patch('/api/projects/:id/variants/:variantId', async (req, res) => {
 app.post('/api/projects/:id/retry', async (_req, res) => {
   const project = res.locals.project as Stored;
   if (generating.has(project.id)) { res.status(409).json({ error: '正在生成，請稍候。' }); return; }
-  if (!project.variants.some(v => v.status === 'failed')) { res.json(publicProject(project)); return; }
+  if (!project.variants.some(v => needsGeneration(v, imageGenerationEnabled()))) { res.json(publicProject(project)); return; }
   project.phase = 'generating'; await persist(); res.json(publicProject(project)); void generate(project);
 });
 app.use(express.static(resolve('dist')));
@@ -172,11 +191,16 @@ app.use((error: Error, _req: express.Request, res: express.Response, _next: expr
 const expiryTimer = setInterval(() => {
   for (const [id, project] of projects) if (project.expiresAt <= Date.now()) projects.delete(id);
   void persist();
+  void cleanExpiredImages();
 }, 60000);
 expiryTimer.unref();
 await persist();
+await cleanExpiredImages();
 for (const project of projects.values()) {
   if (Object.values(project.engines).some(s => s !== 'complete')) void analyze(project);
   if (project.phase === 'generating') void generate(project);
 }
-app.listen(Number(process.env.PORT) || 3001, '127.0.0.1', () => console.log('Persona Engine API: http://127.0.0.1:3001'));
+const server = app.listen(Number(process.env.PORT || 3001), '127.0.0.1', () => {
+  const address = server.address();
+  console.log(`Persona Engine API: http://127.0.0.1:${typeof address === 'object' && address ? address.port : 3001}`);
+});
