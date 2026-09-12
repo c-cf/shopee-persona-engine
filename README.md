@@ -7,7 +7,6 @@
 </p>
 
 <p align="center">
-  <a href="#project-status"><img src="https://img.shields.io/badge/status-local_prototype-df502e?style=flat-square" alt="Status: local prototype"></a>
   <a href="package.json"><img src="https://img.shields.io/badge/stack-TypeScript-3178c6?style=flat-square" alt="TypeScript frontend and backend"></a>
   <a href="#quick-start"><img src="https://img.shields.io/badge/demo-no_API_key-26786f?style=flat-square" alt="Demo requires no API key"></a>
   <a href="#license"><img src="https://img.shields.io/badge/license-not_specified-777777?style=flat-square" alt="License not specified"></a>
@@ -169,7 +168,7 @@ There is no implemented fit score, novelty score, uplift estimate, vector retrie
 
 ## Project status
 
-This is a **local hackathon prototype** with an implemented editing workflow. It has no Shopee login, Seller Center integration, live publishing, review corpus, vector search or complete 10K Explorer. It does not measure conversion lift.
+The current version supports the complete listing review and editing workflow. It has no Shopee login, Seller Center integration, live publishing, review corpus, vector search or complete 10K Explorer. It does not measure conversion lift.
 
 Projects expire seven days after creation. Return access depends on the same browser's workspace key. Image links use random IDs but do not require that key; anyone who has a valid link can retrieve the image until expiry. Public hosting needs additional access and deployment decisions. [Operational details →](docs/configuration.md)
 

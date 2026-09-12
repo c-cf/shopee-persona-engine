@@ -7,7 +7,6 @@
 </p>
 
 <p align="center">
-  <a href="#專案狀態"><img src="https://img.shields.io/badge/status-local_prototype-df502e?style=flat-square" alt="狀態：本機原型"></a>
   <a href="package.json"><img src="https://img.shields.io/badge/stack-TypeScript-3178c6?style=flat-square" alt="前後端皆使用 TypeScript"></a>
   <a href="#快速開始"><img src="https://img.shields.io/badge/demo-no_API_key-26786f?style=flat-square" alt="Demo 不需要 API 金鑰"></a>
   <a href="#授權"><img src="https://img.shields.io/badge/license-not_specified-777777?style=flat-square" alt="尚未指定授權"></a>
@@ -169,7 +168,7 @@ preselected = 依 priority 穩定遞減排序後，取前 5 個
 
 ## 專案狀態
 
-目前是具備完整編輯流程的**本機黑客松原型**。尚無 Shopee 登入、Seller Center 整合、實際上架、評論 corpus、向量搜尋或完整 10K Explorer，也不衡量轉換率提升。
+目前版本已支援完整的商品頁審閱與編輯流程。尚無 Shopee 登入、Seller Center 整合、實際上架、評論 corpus、向量搜尋或完整 10K Explorer，也不衡量轉換率提升。
 
 專案於建立七天後到期，回訪依賴同一瀏覽器保存的工作區金鑰。圖片連結使用隨機 ID，但不檢查工作區金鑰；持有有效連結的人可在到期前讀取圖片。公開部署前仍需決定存取控制與部署方式。[運作細節 →](docs/configuration.md)
 

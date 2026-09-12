@@ -37,7 +37,7 @@ source was used as a structural reference, not as product claims or copied artwo
 
 The homepage follows the questions a new reader needs answered:
 
-1. **What is it?** Hero, one-sentence purpose and visible local/demo status.
+1. **What is it?** Hero, one-sentence purpose and visible demo behavior.
 2. **Why use it?** The listing problem and the review workflow.
 3. **What will I see?** A real screenshot, sample scenario and its evidence limits.
 4. **How do I run it?** Keyless setup first, provider configuration as an option.
