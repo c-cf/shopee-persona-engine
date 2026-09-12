@@ -1,0 +1,33 @@
+{
+  "deployment_version": "20260912-c7ed2af-d31-v3",
+  "upstream_commit": "c7ed2afbfdfe47157411959550250027ee2d3d2b",
+  "host": "165.22.106.67",
+  "bind": "127.0.0.1:3001",
+  "service": "persona-engine.service",
+  "app_release": "/srv/shopee-persona-engine/app/releases/20260912-c7ed2af-d31-v3",
+  "data_release": "/srv/shopee-persona-engine/app-data/releases/20260912-amazon-smart-plug-v1",
+  "checksums": {
+    "dist-server/index.mjs": "2e93ec97c040b161e84eb257c1b9ab66065f170120c92c0acf8e2e4352efdd85",
+    "dist/index.html": "702dca67b0d9532d17b85bd1df7fed4c1442c61d6491c5dc4d6a659b9ff6a6c4",
+    "package-lock.json": "484308de034aee7ea8349a5b771582f3845f62bf3294a832b2ed9f813a0f415e",
+    "personas.sqlite3": "a04ac2f5d0c1be1897d89d0508af31b4cca176e50a4ead407282732782572025",
+    "persona_cards.jsonl": "bbe044eb395b658ac0bd44f48be84a106e0be48a40d109ce808b1e004a1587c2",
+    "top_matches.json": "3a1905bb8ab88d2be08bb3cd717b8200610358b0e9ea71397fe89dda902ec46f",
+    "evaluations.sqlite3": "c69fe594dfa8f24eca843efcd5e8fdcdaf66b27afebd51ffe10a968f75dec034"
+  },
+  "validation": {
+    "health": "ok",
+    "loaded_buyers": 15,
+    "buyer_groups": ["explorer"],
+    "all_have_visible_metrics": true,
+    "story_hook_exposed": false,
+    "frontend_http": 200,
+    "cross_product_results_rejected": true
+  },
+  "reverse_proxy": {
+    "server": "nginx/1.24.0",
+    "config": "/etc/nginx/sites-available/persona-engine",
+    "public_url": "http://165.22.106.67/"
+  },
+  "public_exposure": true
+}

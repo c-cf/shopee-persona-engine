@@ -5,12 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently -k -n api,web \"tsx watch server/index.ts\" \"vite --host 127.0.0.1\"",
-    "build": "tsc --noEmit && vite build",
+    "build": "tsc --noEmit && vite build && npm run build:server",
+    "build:server": "esbuild server/index.ts --bundle --platform=node --format=esm --target=node18 --packages=external --outfile=dist-server/index.mjs",
     "start": "tsx server/index.ts",
-    "test": "tsx --test server/*.test.ts"
+    "test": "tsx --test server/*.test.ts src/*.test.ts"
   },
   "dependencies": {
-    "cheerio": "^1.1.2",
+    "cheerio": "1.0.0",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "lucide-react": "^0.468.0",
@@ -25,6 +26,7 @@
     "@types/react-dom": "^19.2.2",
     "@vitejs/plugin-react": "^5.1.0",
     "concurrently": "^9.2.1",
+    "esbuild": "^0.25.12",
     "tsx": "^4.20.6",
     "typescript": "~5.9.3",
     "vite": "^7.2.2"

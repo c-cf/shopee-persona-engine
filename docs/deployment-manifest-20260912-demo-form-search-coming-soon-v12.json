@@ -1,0 +1,43 @@
+{
+  "release": "20260912-demo-form-search-coming-soon-v12",
+  "deployed_at": "2026-09-12T16:25:13+08:00",
+  "public_origin": "http://165.22.106.67",
+  "previous_release": "20260912-smartplug-unique-names-coming-soon-v11",
+  "rollback_release": "20260912-smartplug-unique-names-coming-soon-v11",
+  "service": "persona-engine.service",
+  "scope": [
+    "disabled full-universe Search with Coming Soon messaging",
+    "local-only Amazon Smart Plug manual form fill",
+    "required positive price validation and canonical demo USD 29.99"
+  ],
+  "excluded_from_release": [
+    "persona image assets and manifest",
+    "15-page demo migration",
+    "realtime Search orchestration"
+  ],
+  "build_outputs": {
+    "dist_index_sha256": "140e023ac874c3a0cfedd5a84697f595cb8a44febf7b38d856a54b9875f4798e",
+    "client_js_sha256": "4e8008d50f39a84cd99dc5dbdfd53d9a7626f1a886c6d02f0e36e76d67dc96ce",
+    "client_css_sha256": "55759d4224b9c1c9b4bded1a65607166558a44300277fdc9dd762742bf280177",
+    "server_bundle_sha256": "b2bfe44723c36e8365c8d0fe6889b2e0753f1b301343c84035a0d178091a21ba"
+  },
+  "verification": {
+    "tests_passed": 24,
+    "tests_failed": 0,
+    "build": "passed",
+    "homepage_http_status": 200,
+    "persona_results_http_status": 200,
+    "service_active": true,
+    "realtime_public_execution_enabled": false,
+    "browser_path_before": "/",
+    "browser_path_after_demo_fill": "/",
+    "demo_fill_post_count": 0,
+    "demo_title": "Amazon Smart Plug",
+    "demo_price": 29.99,
+    "demo_currency": "USD",
+    "demo_image_matches_canonical": true,
+    "search_native_disabled": true,
+    "search_aria_disabled": true,
+    "persona_images_present_in_release": false
+  }
+}

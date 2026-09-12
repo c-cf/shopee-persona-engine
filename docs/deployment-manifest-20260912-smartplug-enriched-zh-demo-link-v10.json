@@ -1,0 +1,39 @@
+{
+  "release": "20260912-smartplug-enriched-zh-demo-link-v10",
+  "deployed_at": "2026-09-12T15:44:03+08:00",
+  "public_origin": "http://165.22.106.67",
+  "previous_release": "20260912-smartplug-enriched-zh-v9",
+  "safe_rollback_release": "20260912-smartplug-routes-v6",
+  "service": "persona-engine.service",
+  "realtime_public_execution_enabled": false,
+  "build_outputs": {
+    "dist_index_sha256": "aebfab722b2694772388c0f4e0216be3fa1ab1d69e902d9e672111894567d16b",
+    "client_js_sha256": "881599d554d4b2d1abd172634e6088da324f24efde7c8cadb51b2ffd54283756",
+    "client_css_sha256": "9021954e8d1a2ad404737e4157b95b860a20071953fec7c3bfc5b877d43e8876",
+    "server_bundle_sha256": "c0b1e2cfaf4766b5a3d7f5951fed6b6a221805e002426ba1f8d1fe1a88c4eb05"
+  },
+  "artifact_input": {
+    "path": "data/interim/smartplug-top15-demo-enrichment-v1/top15_enriched.json",
+    "sha256": "8116fbc4c2148dd0f513b252691c899af16c8aaac8b3e48c7e335a14ac21cae8",
+    "manifest_sha256": "64118177ca29530c02d34b8afd7e240f23ee5b513254ddff131358926c842d69",
+    "selection_status": "experimental_selected_15"
+  },
+  "verification": {
+    "tests": 20,
+    "build": "passed",
+    "loaded_buyers": 15,
+    "unique_persona_ids": 15,
+    "four_factor_records": 15,
+    "localized_core_records": 15,
+    "artifact_listing_variants": 5,
+    "public_routes_http_200": 6,
+    "demo_link_target": "/projects/59238ee8-2286-460c-b2dd-8383459e45f3/personas",
+    "demo_link_click_post_count": 0,
+    "demo_link_refresh": "passed",
+    "demo_link_browser_back": "passed",
+    "viewport_widths": [1440, 1280, 768, 375],
+    "document_width_equals_viewport": true,
+    "horizontal_overflow_elements": 0,
+    "browser_console_errors": 0
+  }
+}

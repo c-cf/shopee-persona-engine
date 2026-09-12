@@ -1,0 +1,26 @@
+[Unit]
+Description=Shopee Persona Engine D31 demo
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=persona-engine
+Group=persona-engine
+WorkingDirectory=/srv/shopee-persona-engine/app/current
+Environment=NODE_ENV=production
+Environment=PORT=3001
+Environment=PERSONA_MATCHES_FILE=/srv/shopee-persona-engine/app-data/current/product-match/top_matches.json
+Environment=PERSONA_CARDS_FILE=/srv/shopee-persona-engine/app-data/current/persona-cards/persona_cards.jsonl
+Environment=PERSONA_DISPLAY_NAMES_FILE=/srv/shopee-persona-engine/app-data/current/display-names/display_names.json
+ExecStart=/usr/bin/node dist-server/index.mjs
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/srv/shopee-persona-engine/app/shared-data
+
+[Install]
+WantedBy=multi-user.target

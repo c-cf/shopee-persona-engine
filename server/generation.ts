@@ -9,7 +9,9 @@ export async function generateVariant(product: Product, buyer: Buyer, variant: V
   if (variant.status !== 'complete') {
     variant.status = 'running'; delete variant.error; await persist();
     try {
-      const copy = await dependencies.generateCopy(product, buyer);
+      const copy = buyer.listingProjection
+        ? { title: buyer.listingProjection.title, description: buyer.listingProjection.description, provider: 'artifact' as const }
+        : await dependencies.generateCopy(product, buyer);
       Object.assign(variant, { title: copy.title, description: copy.description, originalTitle: copy.title, originalDescription: copy.description, provider: copy.provider, status: 'complete' });
     } catch {
       variant.status = 'failed'; variant.error = '這個版本的文案未完成，請重試。';

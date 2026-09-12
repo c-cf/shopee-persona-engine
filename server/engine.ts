@@ -46,24 +46,21 @@ export function defaultSelection(buyers: Buyer[]) {
 export function buildBuyers(product: Product): Buyer[] {
   const hydration = /杯|水瓶|保溫|保冷/.test(product.title);
   const headphones = /開放式.*耳機|open[ -]?ear/i.test(product.title);
-  return (headphones ? headphoneSeeds : seeds).map(([group, name, context, need, angle, hook, objection], i) => ({
-    id: `buyer-${i + 1}`, group: group as Group, name, context,
+  return (headphones ? headphoneSeeds : seeds).map(([_historicalGroup, name, context, need, angle, _internalHook, objection], i) => ({
+    id: `buyer-${i + 1}`, group: 'explorer' as Group, name, context,
     need: hydration && i === 0 ? '出門帶上自己的飲品，讓通勤少一點手忙腳亂' : need,
-    angle, hook, objection,
-    ...(isHeadphoneDemo(product) && name === '父母／照護者' ? {
-      positioning: 'Missed Buyer' as const,
-      evidence: { source: 'user-provided-summary' as const, scope: 'single-representative-product' as const, matchedReviews: 13, verifiedPurchases: 13, note: '使用者提供的單一代表商品證據摘要；尚未附評論原文、連結與商品型號。' },
-    } : {}),
+    angle, objection,
   }));
 }
 
 export function validateSelection(buyers: Buyer[], selected: string[]) {
-  return selected.length >= 5 && selected.length <= 10 && new Set(selected).size === selected.length && selected.every(id => buyers.some(b => b.id === id));
+  return selected.length >= 1 && selected.length <= 15 && new Set(selected).size === selected.length && selected.every(id => buyers.some(b => b.id === id));
 }
 
 export function templateCopy(product: Product, buyer: Buyer) {
-  const title = `${buyer.hook}｜${product.title}`;
-  const description = `${buyer.hook}。\n\n你的日常：${buyer.context}。\n${buyer.need}，是挑選生活用品時值得在意的小事。認識「${product.title}」，為自己的日常多準備一個選擇。\n\n商品細節，一次看清楚\n${product.description}\n\n找到適合自己的選擇\n${buyer.objection} 先核對上方規格，選擇符合你使用習慣的商品。\n\n${product.price !== null ? `商品價格：NT$ ${product.price.toLocaleString('zh-TW')}\n` : ''}從一件適合的物品，開始自己的日常。`;
+  const title = `${buyer.name}｜${product.title}`;
+  const displayPrice = product.price === null ? '' : product.demo ? `US$${product.price.toFixed(2)}` : `NT$ ${product.price.toLocaleString('zh-TW')}`;
+  const description = `你的日常：${buyer.context}。\n${buyer.need}，是挑選這類商品時值得在意的任務。認識「${product.title}」，評估它是否能進入你的使用情境。\n\n商品細節，一次看清楚\n${product.description}\n\n找到適合自己的選擇\n${buyer.objection} 先核對上方規格，選擇符合你使用習慣的商品。\n\n${displayPrice ? `商品價格：${displayPrice}\n` : ''}此頁為 Persona 導向的商品文案草稿，發布前請核對所有商品事實。`;
   return { title, description };
 }
 

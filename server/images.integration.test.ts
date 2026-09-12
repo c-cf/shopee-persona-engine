@@ -68,6 +68,15 @@ test('HTTP generation, image links, retry, JSON persistence and expiry work toge
     }
     throw new Error('Project did not finish');
   }
+  for (const price of [null, 0, -1, 1.001]) {
+    const invalid = await fetch(origin + '/api/projects', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Workspace-Key': owner },
+      body: JSON.stringify({ product: { ...DEMO_PRODUCT, price } }),
+    });
+    assert.equal(invalid.status, 400);
+    assert.match((await invalid.json()).error, /大於 0 且最多兩位小數/);
+  }
   const created = await request('/projects', 'POST', { product: DEMO_PRODUCT }) as Project;
   const analyzed = await waitFor(created.id, p => p.phase === 'audiences');
   const selection = analyzed.buyers.slice(0, 5).map(b => b.id);
@@ -92,7 +101,19 @@ test('HTTP generation, image links, retry, JSON persistence and expiry work toge
   assert.deepEqual(Buffer.from(await image.arrayBuffer()), Buffer.from(png, 'base64'));
   assert.equal((await fetch(origin + `/api/images/${randomUUID()}/${variant.id}.png`)).status, 404);
   assert.equal((await fetch(origin + '/api/images/invalid/path.png')).status, 404);
-  assert.equal((await fetch(origin + `/api/projects/${created.id}`)).status, 401);
+  // Frozen demo project links are intentionally public/read-only so judges can
+  // open a shared route; mutations and non-demo projects still require owner.
+  assert.equal((await fetch(origin + `/api/projects/${created.id}`)).status, 200);
+  assert.equal(
+    (
+      await fetch(origin + `/api/projects/${created.id}/selection`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ selected: selection }),
+      })
+    ).status,
+    401,
+  );
   await request(`/projects/${created.id}/generate`, 'POST', { selected: selection });
   assert.equal(JSON.parse(await readFile(join(directory, 'calls.json'), 'utf8')), 6);
   const dataFile = join(directory, '.data', 'projects.json');

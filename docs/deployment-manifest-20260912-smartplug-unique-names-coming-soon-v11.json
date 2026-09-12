@@ -1,0 +1,47 @@
+{
+  "release": "20260912-smartplug-unique-names-coming-soon-v11",
+  "deployed_at": "2026-09-12T15:55:22+08:00",
+  "public_origin": "http://165.22.106.67",
+  "previous_release": "20260912-smartplug-enriched-zh-demo-link-v10",
+  "safe_rollback_release": "20260912-smartplug-routes-v6",
+  "service": "persona-engine.service",
+  "realtime_public_execution_enabled": false,
+  "build_outputs": {
+    "dist_index_sha256": "4fa7aece3941779766f285d8da1948d0ba496436f8e819aac87f53780519867f",
+    "client_js_sha256": "208fee82f30ef82713fd8580394f07f1370762cca82097ca439262c768531f4d",
+    "client_css_sha256": "e994c1e003ce9ba78ec12f8413379b339ebfddfb20f42424bf745481143ab61e",
+    "server_bundle_sha256": "fcc4c5b155e6b0363942b7ae0574d6fc1e6cb96ae9c527bd5c233ff93b45a141"
+  },
+  "artifact_inputs": {
+    "smartplug_top15_sha256": "8116fbc4c2148dd0f513b252691c899af16c8aaac8b3e48c7e335a14ac21cae8",
+    "display_names_path": "data/interim/smartplug-top15-display-name-enrichment-v1/display_names.json",
+    "display_names_sha256": "a862d2be4a14e1ee44574ede27b223c58058fb4360f07741e5068b47605326d9",
+    "display_names_manifest_sha256": "2fb8848708ddc0f89b3b1ec2456d436b80bf6d3c04ba0badb1d88df212b85ba7",
+    "model": "gpt-5-mini",
+    "store": false,
+    "persona_count": 15,
+    "unique_persona_ids": 15,
+    "unique_display_names": 15,
+    "changed_fields": ["display_name_zh"]
+  },
+  "verification": {
+    "tests": 21,
+    "build": "passed",
+    "production_loaded_buyers": 15,
+    "production_unique_persona_ids": 15,
+    "production_unique_display_names": 15,
+    "homepage_url_input_disabled": true,
+    "homepage_url_input_aria_disabled": true,
+    "homepage_read_button_disabled": true,
+    "homepage_read_button_aria_disabled": true,
+    "disabled_click_requests": 0,
+    "disabled_click_posts": 0,
+    "disabled_click_parse_requests": 0,
+    "demo_link_posts": 0,
+    "homepage_http_200": true,
+    "personas_http_200": true,
+    "persona_detail_http_200": true,
+    "persona_detail_four_dimensions": true,
+    "browser_console_errors": 0
+  }
+}

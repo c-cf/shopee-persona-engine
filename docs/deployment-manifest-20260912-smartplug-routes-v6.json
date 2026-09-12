@@ -1,0 +1,30 @@
+{
+  "release": "20260912-smartplug-routes-v6",
+  "deployed_at": "2026-09-12T14:55:27+08:00",
+  "public_origin": "http://165.22.106.67",
+  "previous_release": "20260912-smartplug-routes-v5",
+  "safe_rollback_release": "20260912-c7ed2af-d31-v4-http-uuid",
+  "service": "persona-engine.service",
+  "build_outputs": {
+    "dist_index_sha256": "d1953f5662991ddee85ee73b82f7be0ed6456875ed0c36a589db7c2c6a613413",
+    "client_js_sha256": "a9566cb83c9598dd2e478ce2490b667e6ee95c077c9c1fab17fa7c73d3a24314",
+    "client_css_sha256": "02687d256d647064218f274b541c8a83c8422cf1c90d83cca2444b01d60685c0",
+    "server_bundle_sha256": "bacfd74745c1fbdf7c4e494f396ff0e79b666b9dc23c0a3277a07c39ca6c9dd8"
+  },
+  "artifact_inputs": {
+    "matches": "data/interim/product-persona-match-amazon-smart-plug-v1/top_matches.json",
+    "matches_sha256": "3a1905bb8ab88d2be08bb3cd717b8200610358b0e9ea71397fe89dda902ec46f",
+    "cards": "data/interim/persona-card-projection-v1/persona_cards.jsonl",
+    "cards_sha256": "bbe044eb395b658ac0bd44f48be84a106e0be48a40d109ce808b1e004a1587c2"
+  },
+  "verification": {
+    "tests": 16,
+    "build": "passed",
+    "loaded_buyers": 15,
+    "unique_persona_ids": 15,
+    "unique_presentation_names": 15,
+    "direct_route_refresh": "passed",
+    "browser_visual_check": "passed"
+  },
+  "score_contract_note": "Smart Plug v1 lacks the final internal Story Hook dimension, so the UI does not present a v2 Final Score. Evidence remains provenance, not a seller-facing metric."
+}

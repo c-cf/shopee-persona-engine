@@ -1,0 +1,42 @@
+{
+  "release": "20260912-smartplug-persona-pages-images-copy-v13",
+  "deployed_at": "2026-09-12T16:48:19+08:00",
+  "public_origin": "http://165.22.106.67",
+  "project_id": "59238ee8-2286-460c-b2dd-8383459e45f3",
+  "previous_release": "20260912-demo-form-search-coming-soon-v12",
+  "rollback_release": "20260912-demo-form-search-coming-soon-v12",
+  "project_store_backup": "/srv/shopee-persona-engine/app/shared-data/projects.pre-v13-20260912T1646.json",
+  "realtime_public_execution_enabled": false,
+  "build_outputs": {
+    "dist_index_sha256": "396d1e524dcbd6b6c477fc2673f544e144069411868b333969f0ed7887697700",
+    "client_js_sha256": "7fb58f48551c0f2548eea23898f1890da70e10cbeea06f6b0a6f217a96db4b7e",
+    "client_css_sha256": "918adcd654641f6b88ce5f8c6e879a477434696fe81bf9a27b5ca7d5a1fdedbd",
+    "server_bundle_sha256": "aeb5a4e59669cec0760ae2201670ddd96e7074e7b620e9259fcad80439ec7726"
+  },
+  "artifact_inputs": {
+    "persona_images_manifest_sha256": "7ec2d4ea0fb8a37874d80cbfcb1f9e3c853f1eb81ad862f6432441e7b82771fe",
+    "design_profiles_sha256": "5236081d84f9f194f86e24d050a22c40c7db99d88d2e237f03901b2da17e237c",
+    "product_page_copy_sha256": "3aad169b1560be42e4546e43c2c65b1554dd9c17e9365bbbdd2569101316ba4f"
+  },
+  "verification": {
+    "tests_passed": 28,
+    "tests_failed": 0,
+    "build": "passed",
+    "product_price_usd": 29.99,
+    "buyers": 15,
+    "selected_personas": 15,
+    "variants": 15,
+    "unique_persona_ids": 15,
+    "unique_persona_images": 15,
+    "unique_image_hashes": 15,
+    "unique_product_page_titles": 15,
+    "unique_variant_ids": 15,
+    "unique_variant_images": 15,
+    "unique_design_profiles": 15,
+    "image_asset_http_200": 15,
+    "homepage_http_200": true,
+    "personas_route_http_200": true,
+    "product_page_route_http_200": true,
+    "realtime_active_job": false
+  }
+}

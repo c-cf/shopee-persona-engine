@@ -1,0 +1,27 @@
+{
+  "release": "20260912-smartplug-persona-pages-access-v14",
+  "deployed_at": "2026-09-12T16:50:26+08:00",
+  "public_origin": "http://165.22.106.67",
+  "project_id": "59238ee8-2286-460c-b2dd-8383459e45f3",
+  "app_data_release": "20260912-smartplug-persona-pages-images-copy-v13",
+  "previous_app_release": "20260912-smartplug-persona-pages-images-copy-v13",
+  "rollback_release": "20260912-demo-form-search-coming-soon-v12",
+  "realtime_public_execution_enabled": false,
+  "build_outputs": {
+    "dist_index_sha256": "8783980788773018d5fac1e0bc2e7fc1631d1ca78a5d28262d100acd09826e36",
+    "client_js_sha256": "b4a2874205aa95f939d28d2bc7262252657bef32550eafd9acdcfc79c8dac34a",
+    "client_css_sha256": "e441794cb23ee342e964b3395abba5124823c1c00ed4c2d33ace40f566192c70",
+    "server_bundle_sha256": "aeb5a4e59669cec0760ae2201670ddd96e7074e7b620e9259fcad80439ec7726"
+  },
+  "verification": {
+    "tests_passed": 28,
+    "build": "passed",
+    "buyers": 15,
+    "variants": 15,
+    "unique_persona_images": 15,
+    "unique_product_page_copy": 15,
+    "per_card_page_link_visible": true,
+    "all_pages_cta_visible": true,
+    "realtime_active_job": false
+  }
+}
