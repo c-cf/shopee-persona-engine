@@ -27,8 +27,9 @@ the separately hosted deployment.
 | [hero.zh-TW.svg](hero.zh-TW.svg) | 繁體中文 README hero，1280 × 560 |
 | [hero.png](hero.png), [hero.zh-TW.png](hero.zh-TW.png) | PNG exports for sharing／分享用 PNG |
 | [brand-board.svg](brand-board.svg), [brand-board.png](brand-board.png) | Identity overview, 1280 × 680／品牌總覽 |
-| [workflow.svg](workflow.svg) | English pitch workflow, 1280 × 180 |
-| [workflow.zh-TW.svg](workflow.zh-TW.svg) | 繁體中文研究流程圖，1280 × 180 |
+
+Research workflow illustrations live in [../diagrams/](../diagrams/README.md).
+研究流程圖另見 diagrams 目錄。
 
 ## Palette / 色彩
 

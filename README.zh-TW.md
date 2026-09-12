@@ -38,7 +38,7 @@
 2. **探索商品 × Persona。** 在商品能力範圍內，請 LLM 為每個配對提出合理用途，回傳故事、四項分數與結構化 JSON。
 3. **把發現帶回商品頁。** 選受眾、為每個方向產生商品頁，再比較、修改與複製；商品事實與價格始終是共同依據。
 
-<img src="docs/assets/brand/workflow.zh-TW.svg" alt="評論需求 → 人物樣態集合 → 商品配對 → 探索評分 → 商品頁預覽" width="100%">
+<img src="docs/assets/diagrams/workflow.zh-TW.svg" alt="評論需求 → 人物樣態集合 → 商品配對 → 探索評分 → 商品頁預覽" width="100%">
 
 簡報以 **1,500 personas** 說明流程，資料來源列為 **Amazon Reviews 2023（McAuley Lab）**；附錄註明集合規模、向量及分群為示意，corpus 範圍與經驗證的集合大小仍待確認。線上 demo 另將已儲存的智慧插座結果標示為 1,500 次歷史評估、選出 15 個 personas。詳見[方法文件](docs/methodology.md)的證據與實作界線。
 
@@ -181,10 +181,12 @@ Final Score = 100 × (Bridge / 100)^0.30
 ├── shared/                 # 共用型別、示範商品與單頁 JSON 匯出
 ├── public/                 # App favicon 與內附商品示意圖
 ├── docs/
-│   ├── assets/brand/       # SVG 標誌、字標、雙語 hero 與流程圖
+│   ├── glossary.md         # 領域詞彙
+│   ├── assets/brand/       # 標誌、字標與雙語 hero
+│   ├── assets/diagrams/    # 研究流程圖
 │   ├── assets/screenshots/ # 本機 demo 實際截圖
-│   └── adr/                # 原始範圍決策
-├── CONTEXT.md              # 領域詞彙
+│   ├── adr/                # 範圍決策
+│   └── archive/            # 歷史設計、訪談與工作紀錄
 ├── CONTRIBUTING.md
 ├── README.md               # 英文主版
 └── README.zh-TW.md          # 繁體中文版

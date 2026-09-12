@@ -2,7 +2,7 @@
 
 [English homepage](../README.md) · [繁體中文首頁](../README.zh-TW.md)
 
-## Current guides / 現行指南
+## Guides / 使用與開發指南
 
 | Document | Contents / 內容 |
 | --- | --- |
@@ -10,22 +10,24 @@
 | [Configuration](configuration.md) | Provider settings, data handling and local operation／模型設定、資料處理與本機運作 |
 | [Architecture](architecture.md) | Modules, checkpoints and export contract／模組、進度檢查點與匯出契約 |
 | [Methodology](methodology.md) | Pitch scoring formula, research workflow and baseline selection／簡報評分公式、研究流程與基準版預選 |
-| [Brand assets](assets/brand/README.md) | Logo, wordmark and README visuals／標誌、字標與首頁視覺 |
+| [Glossary](glossary.md) | Product, persona, audience and listing terminology／商品、人物樣態、受眾與商品頁用語 |
 | [Contributing](../CONTRIBUTING.md) | Change scope and relevant checks／修改範圍與驗證方式 |
-| [Homepage audit](homepage-audit.md) | Source audit, information architecture and verification／盤點、資訊架構與驗證 |
 
-## Design history / 設計紀錄
+## Visual assets / 視覺資產
 
-These files record decisions and earlier validation. They are preserved as history;
-use the current guides and source code to determine implemented behavior. In
-particular, earlier notes about sharing only the original image predate optional
-per-audience image generation.
+- [Brand](assets/brand/README.md): logo, wordmark, app icon and bilingual hero／標誌、字標、產品圖示與雙語 hero。
+- [Diagrams](assets/diagrams/README.md): research workflow illustrations／研究流程圖。
+- [Screenshots](demo.md#baseline-screenshots--基準版截圖): repository captures and their provenance／repo 截圖與來源紀錄。
 
-以下文件保留原始決策與驗證紀錄；實作行為以現行指南及程式碼為準。早期「共用原圖」的敘述早於受眾專屬圖片功能。
+## Decisions and history / 決策與歷史
 
-- [Domain vocabulary / 領域詞彙](../CONTEXT.md)
-- [User journey / 使用流程訪談](user-journey.md)
-- [First-version design / 第一版設計](design-v1.md)
+Accepted scope decisions remain in `adr/`:
+
 - [In-service previews / 服務內預覽](adr/0001-in-service-listing-previews.md)
 - [Hackathon scope / 黑客松範圍](adr/0002-hackathon-first-version.md)
-- [Original validation / 原始驗證](v1-validation.md)
+
+Earlier designs, interviews, validation notes and the homepage work record live in
+[the archive](archive/README.md). They preserve context and may describe superseded
+behavior. Use the guides above and source code for current implementation details.
+
+歷史設計、訪談、驗證及首頁整理紀錄集中於 archive，供追溯背景；其中可能記載已被後續修改取代的行為。現行實作細節以上方指南及程式碼為準。

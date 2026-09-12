@@ -1,6 +1,6 @@
 # Homepage audit / 首頁盤點
 
-[Docs](README.md) · [English](../README.md) · [繁體中文](../README.zh-TW.md)
+[Docs](../README.md) · [English](../../README.md) · [繁體中文](../../README.zh-TW.md)
 
 **Audit date:** 2026-09-12
 
@@ -71,15 +71,15 @@ The homepage follows the questions a new reader needs answered:
 
 | Claim | Source |
 | --- | --- |
-| Scripts and stack | [`package.json`](../package.json), [`vite.config.ts`](../vite.config.ts) |
-| Input validation, local binding, persistence, expiry | [`server/index.ts`](../server/index.ts) |
-| Scenario count, evidence, default-selection rule | [`server/engine.ts`](../server/engine.ts), [`shared/types.ts`](../shared/types.ts) |
-| Edited-version recovery | [`server/variants.ts`](../server/variants.ts) |
-| Copy/image checkpoints | [`server/generation.ts`](../server/generation.ts) |
-| Image prompt, request format and default model | [`server/images.ts`](../server/images.ts), [`.env.example`](../.env.example) |
-| JSON schema and UI export | [`shared/listing-export.ts`](../shared/listing-export.ts), [`src/App.tsx`](../src/App.tsx) |
-| Research work deferred | [ADR-0002](adr/0002-hackathon-first-version.md), [`CONTEXT.md`](../CONTEXT.md) |
-| Local demo screens | [Capture provenance](demo.md) |
+| Scripts and stack | [`package.json`](../../package.json), [`vite.config.ts`](../../vite.config.ts) |
+| Input validation, local binding, persistence, expiry | [`server/index.ts`](../../server/index.ts) |
+| Scenario count, evidence, default-selection rule | [`server/engine.ts`](../../server/engine.ts), [`shared/types.ts`](../../shared/types.ts) |
+| Edited-version recovery | [`server/variants.ts`](../../server/variants.ts) |
+| Copy/image checkpoints | [`server/generation.ts`](../../server/generation.ts) |
+| Image prompt, request format and default model | [`server/images.ts`](../../server/images.ts), [`.env.example`](../../.env.example) |
+| JSON schema and UI export | [`shared/listing-export.ts`](../../shared/listing-export.ts), [`src/App.tsx`](../../src/App.tsx) |
+| Research work deferred | [ADR-0002](../adr/0002-hackathon-first-version.md), [Domain glossary](../glossary.md) |
+| Local demo screens | [Capture provenance](../demo.md) |
 
 ## Verification / 驗證
 

@@ -23,7 +23,7 @@
 | Q7：預覽後操作 | 比較版本、直接修改標題與文案、標記喜歡的版本，以及複製文字。 |
 | Q8：等待目標 | 啟動分析後三十秒內看到第一批受眾；選定受眾並開始生成後，兩分鐘內得到五個預覽，其餘逐張出現。這是待實測的目標，不含使用者閱讀與選擇時間。 |
 
-架構範圍記錄：[ADR-0001：在服務內交付模擬商品頁](adr/0001-in-service-listing-previews.md)。
+架構範圍記錄：[ADR-0001：在服務內交付模擬商品頁](../adr/0001-in-service-listing-previews.md)。
 
 ## 完整主流程
 
@@ -117,7 +117,7 @@ Q1–Q12 均已確認。以下第三輪建議已採納，次要細節依第一�
 
 ## 訪談方式
 
-使用專案指定的 [grill-with-docs](../.agents/skills/grill-with-docs/SKILL.md)。其依賴的 `grilling` 與 `domain-modeling` 未安裝於本機，本輪從 `skills-lock.json` 所載原始來源讀取：
+使用專案指定的 `grill-with-docs`（原紀錄路徑 `.agents/skills/grill-with-docs/SKILL.md`，未收錄於此 repository）。其依賴的 `grilling` 與 `domain-modeling` 未安裝於本機，本輪從 `skills-lock.json` 所載原始來源讀取：
 
 - [grilling](https://github.com/mattpocock/skills/blob/main/skills/productivity/grilling/SKILL.md)：按決策依賴分輪提問，每輪等待回答。
 - [domain-modeling](https://github.com/mattpocock/skills/blob/main/skills/engineering/domain-modeling/SKILL.md)：釐清領域用語，隨確認結果更新 glossary，必要時記錄 ADR。

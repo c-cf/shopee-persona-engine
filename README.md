@@ -38,7 +38,7 @@ The pitch follows three steps:
 2. **Explore product × persona.** Ask an LLM for plausible uses within the product's capabilities, returning a story, four sub-scores and structured JSON for each pairing.
 3. **Bring it back to the listing.** Pick audiences, create one listing per audience, then compare, edit and copy. Product facts and price remain the common reference.
 
-<img src="docs/assets/brand/workflow.svg" alt="Review needs → persona registry → product pairing → exploration scores → listing previews" width="100%">
+<img src="docs/assets/diagrams/workflow.svg" alt="Review needs → persona registry → product pairing → exploration scores → listing previews" width="100%">
 
 The deck illustrates this with **1,500 personas** and cites **Amazon Reviews 2023 (McAuley Lab)**. Its appendix identifies that registry size, vectors and clusters as illustrative; corpus scope and validated registry size await confirmation. The live demo separately presents a saved Smart Plug run as 1,500 historical evaluations with 15 selected personas. See [methodology](docs/methodology.md) for the evidence and implementation boundaries.
 
@@ -181,10 +181,12 @@ The hosted UI displays these four dimensions and Final Score. The checked-in bas
 ├── shared/                 # Shared types, demo product and single-page JSON export
 ├── public/                 # App favicon and bundled product illustrations
 ├── docs/
-│   ├── assets/brand/       # SVG mark, wordmark, bilingual hero and workflow
+│   ├── glossary.md         # Domain vocabulary
+│   ├── assets/brand/       # Logo, wordmark and bilingual hero
+│   ├── assets/diagrams/    # Research workflow illustrations
 │   ├── assets/screenshots/ # Captures from the running local demo
-│   └── adr/                # Original scope decisions
-├── CONTEXT.md              # Domain vocabulary
+│   ├── adr/                # Scope decisions
+│   └── archive/            # Earlier designs, interviews and work records
 ├── CONTRIBUTING.md
 ├── README.md               # English homepage
 └── README.zh-TW.md          # Traditional Chinese homepage
