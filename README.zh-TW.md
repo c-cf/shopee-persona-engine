@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/brand/hero.zh-TW.svg" alt="Persona Engine：誰還需要它？探索意想不到的買家，再寫出對應的商品頁。" width="100%">
+  <img src="docs/assets/brand/hero.zh-TW.svg" alt="Persona Engine：誰還需要它？以智慧插座連到魚缸照明作息的概念插畫，呈現意想不到的買家。" width="100%">
 </p>
 
 <p align="center">

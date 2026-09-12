@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/brand/hero.svg" alt="Persona Engine — Who else needs it? Explore unexpected buyers, then write the listing that speaks to them." width="100%">
+  <img src="docs/assets/brand/hero.svg" alt="Persona Engine — Who else needs it? Concept illustration: a smart plug becomes a lighting routine for an aquarium keeper." width="100%">
 </p>
 
 <p align="center">
