@@ -2,6 +2,12 @@
 
 [Docs](README.md) · [English](../README.md) · [繁體中文](../README.zh-TW.md)
 
+These settings describe the checked-in baseline, not verified settings of the
+[hosted Smart Plug demo](http://165.22.106.67/). The deployment's provider keys,
+storage and infrastructure were not inspected. See [demo](demo.md) for the public walkthrough.
+
+以下設定對應 repo 基準版，不代表已查驗線上部署的金鑰、儲存或基礎設施；公開展示流程見 demo 指南。
+
 ## Local modes / 本機模式
 
 The copy and image providers are independent. Audience discovery remains a demo in all modes.
@@ -104,13 +110,13 @@ projects and orphaned image files; cleanup also runs at startup.
   specifications must be supplied by the seller, not inferred from demo content.
 - The server binds to `127.0.0.1`. For local development use ports 5173/3001; after
   `npm run build`, `npm start` serves the frontend and API at port 3001.
-- A future deployment must keep `.data` persistent and serve/proxy `/api` on the
+- A deployment of this baseline must keep `.data` persistent and serve/proxy `/api` on the
   same origin. There is no production authentication, external queue or documented
   multi-process storage strategy. Decide these before treating it as a hosted service.
 
 網址只接受上述台灣 Shopee 網域的 HTTPS 公開 metadata，重新導向也限於相同允許清單；沒有登入、驗證碼處理或反爬繞過。讀取失敗可改手動輸入。上傳僅支援最多 1.3 MB 的 PNG、JPG、WebP；缺價與缺規格需由賣家補齊。
 
-後端僅綁定 `127.0.0.1`。未來部署需保留 `.data`，並由同源提供或代理 `/api`；正式身分驗證、外部工作佇列與多程序儲存策略仍待決定。
+後端僅綁定 `127.0.0.1`。部署此基準版需保留 `.data`，並由同源提供或代理 `/api`；正式身分驗證、外部工作佇列與多程序儲存策略仍待決定。
 
 ## Troubleshooting / 疑難排解
 

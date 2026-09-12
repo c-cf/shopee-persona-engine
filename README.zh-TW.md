@@ -1,57 +1,77 @@
 <p align="center">
-  <img src="docs/assets/brand/hero.zh-TW.svg" alt="Persona Engine：同一件商品，從不同受眾的需求出發。以商品事實建立受眾情境與模擬商品頁。" width="100%">
+  <img src="docs/assets/brand/hero.zh-TW.svg" alt="Persona Engine：誰還需要它？探索意想不到的買家，再寫出對應的商品頁。" width="100%">
 </p>
 
 <p align="center">
-  <a href="README.md">English</a> · <strong>繁體中文</strong> · <a href="#demo">Demo</a> · <a href="#快速開始">快速開始</a> · <a href="docs/README.md">文件</a>
+  <a href="README.md">English</a> · <strong>繁體中文</strong> · <a href="http://165.22.106.67/">線上 Demo</a> · <a href="https://claude.ai/code/artifact/460a9183-01f2-422d-bec5-9afa4009abb9">簡報</a> · <a href="#快速開始">快速開始</a> · <a href="docs/README.md">文件</a>
 </p>
 
 <p align="center">
   <a href="package.json"><img src="https://img.shields.io/badge/stack-TypeScript-3178c6?style=flat-square" alt="前後端皆使用 TypeScript"></a>
-  <a href="#快速開始"><img src="https://img.shields.io/badge/demo-no_API_key-26786f?style=flat-square" alt="Demo 不需要 API 金鑰"></a>
+  <a href="http://165.22.106.67/"><img src="https://img.shields.io/badge/demo-live-26786f?style=flat-square" alt="開啟線上 demo"></a>
   <a href="#授權"><img src="https://img.shields.io/badge/license-not_specified-777777?style=flat-square" alt="尚未指定授權"></a>
 </p>
 
-**Shopee Persona Engine 協助賣家把一件商品，轉成 5–10 個面向不同受眾的模擬商品頁。** 帶入商品事實、選擇受眾情境，再以模擬的 Shopee 版面比較、修改、標記喜歡及複製候選文案。
+## 誰還需要它？
 
-目前提供本機執行的繁體中文介面。受眾探索使用明確標示的示範情境；不設定 API 金鑰也能產生樣板文案，亦可選擇啟用模型文案與情境圖片。
+**Persona Engine 探索賣家原本沒想到的買家，再把使用情境轉成為他們而寫的商品頁。** 從商品真正能做的事出發，找出它在另一種生活情境中能完成的任務，讓這個發現回到商品頁的溝通。
 
-## 想解決的問題
+**Shopee Hackathon 2026** 專案。[體驗線上 demo](http://165.22.106.67/) · [查看簡報](https://claude.ai/code/artifact/460a9183-01f2-422d-bec5-9afa4009abb9)
 
-商品頁可能把規格寫得很完整，卻沒有說明商品如何融入買家的日常。賣家需要嘗試不同溝通角度，也需要在改稿時隨時核對價格、規格與其他商品事實。
+## 同一件商品，另一種買家
 
-## 如何處理
+以功能為主的智慧插座文案，介紹的是排程與遠端電源控制；面向**水族飼養者**時，切入點則是魚缸照明的每日作息。商品相同，值得關心它的理由不同。
 
-Persona Engine 把候選方向放進同一個工作區。每個選定受眾都有自己的標題與描述，可切換桌機、手機預覽，並與另一版本或原商品內容比較。賣家審閱後再複製帶走；服務不會實際發布到 Shopee。
+| 商品 | 意想不到的買家 | 溝通角度 | 案例狀態 |
+| --- | --- | --- | --- |
+| Smart Plug | 水族飼養者 | 為魚缸燈光安排作息，外出時也能延續 | 簡報中的團隊回報結果 |
+| 開放式耳機 | 新生兒照護者 | 聽 Podcast，同時留意家中聲音 | 團隊情境示例 |
+| USB-C Hub | 外出工作的化妝師 | 現場拍攝、備份並交付內容 | 團隊情境示例 |
 
-<img src="docs/assets/brand/workflow.zh-TW.svg" alt="確認商品事實 → 探索 15 個示範受眾 → 選取 5–10 個 → 產生文案 → 比較與修改" width="100%">
+這些是簡報中的案例，不是銷售提升數據或經驗證的商品攝影。智慧插座控制的是供電，不會增加監控、攝影或通訊功能；設備相容性與電氣額定值仍須依實際型號確認。
+
+## 如何運作
+
+簡報以三個步驟說明方法：
+
+1. **先建立可重用的人物樣態。** 從評論需求出發，經過 embedding、分群，並保留離群項目供檢視，建立包含情境、任務與來源參照的共用 persona registry。
+2. **探索商品 × Persona。** 在商品能力範圍內，請 LLM 為每個配對提出合理用途，回傳故事、四項分數與結構化 JSON。
+3. **把發現帶回商品頁。** 選受眾、為每個方向產生商品頁，再比較、修改與複製；商品事實與價格始終是共同依據。
+
+<img src="docs/assets/brand/workflow.zh-TW.svg" alt="評論需求 → 人物樣態集合 → 商品配對 → 探索評分 → 商品頁預覽" width="100%">
+
+簡報以 **1,500 personas** 說明流程，資料來源列為 **Amazon Reviews 2023（McAuley Lab）**；附錄註明集合規模、向量及分群為示意，corpus 範圍與經驗證的集合大小仍待確認。線上 demo 另將已儲存的智慧插座結果標示為 1,500 次歷史評估、選出 15 個 personas。詳見[方法文件](docs/methodology.md)的證據與實作界線。
 
 ## Demo
 
-依[快速開始](#快速開始)啟動本機服務，按 **「載入示範商品」**、**「開始探索受眾」**，保留五個預選方向，再按 **「生成 5 個商品頁」**。
+**[開啟線上 demo →](http://165.22.106.67/)**
 
-範例商品是開放式耳機。**父母／照護者**方向示範一種「Missed Buyer」：希望收聽內容，同時留意家人聲音的人。此方向附有**使用者提供的單一代表商品摘要：13 則命中評論，全部標示為 Verified Purchase**。目前沒有評論原文、來源連結、品牌或型號，服務也未自行查驗。這是值得探索的溝通假說，尚未證明這群人會購買目前商品。
+在 Amazon Smart Plug 卡片按 **「查看示範分析」**，查看 15 個 Explorer 結果與四維分數，再按 **「查看商品頁預覽」** 開啟已儲存的工作區。2026-09-12 檢查時，已有 10 個預覽可查看。
 
-品牌、價格與詳細規格保持待補；商品圖為品類外觀示意。
+部署版目前將 Shopee 網址匯入標為 **Coming Soon／即將推出**；簡報展示可從既有分析進入。瀏覽已儲存的結果不等於重新執行 1,500 個 personas 配對。網站可用狀態與專案到期時間可能變動。
 
-![本機 demo 實際畫面：父母／照護者文案版本，含受眾情境、原商品示意圖及文字編輯區](docs/assets/screenshots/listing-workspace.png)
-
-*擷取自本機執行的程式，使用樣板文案並停用圖片生成。介面為繁體中文，耳機圖是專案內附的示意圖。*
+簡報以水族飼養者為主故事；線上這批結果可見燈光排程、難以觸及的開關、旅行與寵物照護等其他情境，不能假設所有簡報案例都包含在目前選出的結果中。
 
 <details>
-<summary>查看受眾選擇、原文比較與手機預覽</summary>
+<summary>Repository demo 截圖：較早的耳機操作流程</summary>
 
-![Core、Market、Explorer 三組共十五個示範受眾](docs/assets/screenshots/audience-explorer.png)
+以下展示 repo 可執行基準版，不是較新的線上智慧插座分析。截圖使用樣板文案及內附耳機示意圖，停用圖片生成。
 
-![候選文案與原商品內容並排比較](docs/assets/screenshots/compare-original.png)
+![Repo 基準版的耳機商品頁編輯工作區](docs/assets/screenshots/listing-workspace.png)
 
-![桌機編輯工作區中的手機版商品頁預覽](docs/assets/screenshots/mobile-preview.png)
+![Repo 基準版的三組預設受眾情境](docs/assets/screenshots/audience-explorer.png)
+
+![候選文案與原商品內容比較](docs/assets/screenshots/compare-original.png)
+
+![編輯工作區中的手機版商品頁](docs/assets/screenshots/mobile-preview.png)
 
 </details>
 
-repo 目前未提供已部署的 demo 或錄影連結。[Demo 指南](docs/demo.md)收錄操作流程與預留的 GIF 拍攝計畫。
+[Demo 操作與截圖來源 →](docs/demo.md)
 
 ## 快速開始
+
+以下指令執行本 repository 的程式，內附開放式耳機與預設受眾情境；線上智慧插座分析及其評估資料尚未包含在此 checkout。
 
 使用 **Node.js 24** 與 npm。原始驗證紀錄使用 Node.js 24；本次文件整理亦以 Node.js 26.5.0 執行測試與建置。
 
@@ -64,7 +84,7 @@ npm run dev
 
 開啟 **[http://127.0.0.1:5173](http://127.0.0.1:5173)**。API 使用 **3001** 埠，Vite 會將 `/api` 轉送至後端。兩個供應商金鑰皆未設定時，demo 使用本機文案樣板及原商品圖片，不會發出付費模型請求。
 
-若使用自己的商品，可嘗試台灣 Shopee 網址，或選擇 **「手動輸入」**。商品名稱至少 2 個字，描述至少 8 個字；價格與圖片為選填，缺漏資料會保留待補狀態。網址讀取僅擷取公開 metadata，可能失敗；遇到此情況可改用手動輸入。
+在本 repository 建置中，可嘗試台灣 Shopee 網址，或選擇 **「手動輸入」**。商品名稱至少 2 個字，描述至少 8 個字；價格與圖片為選填，缺漏資料會保留待補狀態。網址讀取僅擷取公開 metadata，可能失敗；遇到此情況可改用手動輸入。
 
 ### 選用模型
 
@@ -88,19 +108,19 @@ npm start
 
 ## 功能
 
-| 功能 | 目前行為 |
-| --- | --- |
-| 商品輸入 | 台灣 Shopee 公開 metadata、手動文字，以及最多 1.3 MB 的 PNG／JPG／WebP 圖片 |
-| 受眾選擇 | 三組各五個示範情境，選取 5–10 個不同受眾 |
-| 商品文案 | 每個受眾一組標題與描述，使用樣板或選用 OpenRouter |
-| 受眾圖片 | 選用 OpenAI，依文字提示為每個受眾產生情境圖；圖片完成前即可編輯文案 |
-| 審閱工作區 | 桌機／手機版面、兩版本比較，或與原商品內容比較 |
-| 文字編輯 | 自動保存、還原最初生成稿、喜歡標記、複製目前文字 |
-| 調整受眾 | 可增減選擇；重新勾回受眾時，恢復先前編輯的版本 |
-| 匯出 | 複製目前單頁 JSON，包含最新文字、商品、受眾與圖片資訊 |
-| 恢復進度 | 專案本機保存七天、同瀏覽器回訪、進度持久化及失敗重試 |
+| 功能 | 線上 demo | Repository 可執行版本 |
+| --- | --- | --- |
+| 受眾探索 | 已儲存的智慧插座分析：15 個 Explorer personas，附四項分數及 Final Score | 三組各五個預設情境，選取 5–10 個 |
+| 商品輸入 | 網址匯入標示即將推出 | 台灣 Shopee 公開 metadata、手動文字及圖片上傳 |
+| 商品頁工作區 | 已觀察到 10 個智慧插座預覽 | 生成 5–10 組標題／描述，比較桌機與手機版面 |
+| 編輯與匯出 | 可見編輯控制項與單頁 JSON 匯出 | 已實作自動保存、還原、喜歡標記、複製及 JSON 匯出 |
+| 模型與恢復 | 未查驗部署版的供應商設定 | 選用 OpenRouter 文案、OpenAI 情境圖及各自的重試檢查點 |
+
+線上版本以介面觀察為準，未對共用資料測試修改、生成或保存；repository 測試涵蓋的程式行為見[架構文件](docs/architecture.md)。
 
 ## 架構
+
+上方研究流程對應簡報；下圖對應 **repository 可執行基準版**，不代表已重現線上的評估管線。
 
 ```mermaid
 flowchart LR
@@ -122,29 +142,35 @@ flowchart LR
 
 ## Persona Engine 與 Explorer Engine
 
-「Persona Engine」是應用程式名稱；原先規劃的研究流程比目前的 demo 實作更廣。
+**Persona Engine** 是完整產品：理解潛在買家，再把選定方向轉成商品頁。**Explorer Engine** 負責商品與 persona 配對及評分。可重用的人物樣態集合提供情境、任務與來源參照，不是已辨識身分的客戶名單。
 
-| 層次 | 原定用途 | 目前實作 |
-| --- | --- | --- |
-| Core | 找出與商品用途直接相關的受眾 | 五個預設情境 |
-| Market | 從評論佐證找出需求 | 五個預設情境；指定耳機 demo 有一份使用者提供的證據摘要 |
-| Explorer | 在人物樣態集合中探索較不直覺的情境 | 五個預設假說，沒有 10K 推論 |
-| Persona Factory / Universe | 建立有版本的人物樣態集合，原始目標為 10,000 筆 | 尚未接入 |
+Core、Market、Explorer 仍是簡報中的整體受眾分類。線上智慧插座分析目前展示 **15 個 Explorer personas**；repository 基準版則以三組各五個預設情境示範流程。
 
-`core`、`market`、`explorer` 是 demo 的分組識別名稱，不代表三條研究引擎已在執行。[方法與證據界線 →](docs/methodology.md)
+目前簡報以 1,500 personas 為示意規模；較早的 repo 文件曾提出 10,000 筆目標，屬於歷史規劃，不代表目前集合或部署執行規模。
 
 ## 方法與排序公式
 
-目前程式採用的是**預選規則**，不是市場排序模型：
+簡報提出四個維度，用於判斷**探索優先順序**：
+
+| 維度 | 權重 | 評估問題 |
+| --- | --- | --- |
+| Product–Job Bridge | 30% | 商品能否完成這個任務？ |
+| Beer–Diaper Index | 30% | 連結是否出乎意料，但仍合理？ |
+| Market Opportunity | 20% | 機會可能涵蓋多廣？由 LLM 估計。 |
+| Story Hook | 20% | 情境是否具畫面感、容易記住？ |
+
+各項為 0–100 分，提案採用加權幾何平均：
 
 ```text
-priority(buyer) = 有 buyer.evidence 時為 1，否則為 0
-preselected = 依 priority 穩定遞減排序後，取前 5 個
+Final Score = 100 × (Bridge / 100)^0.30
+                  × (Beer–Diaper / 100)^0.30
+                  × (Market / 100)^0.20
+                  × (Hook / 100)^0.20
 ```
 
-同分時維持預設情境的順序。指定耳機 demo 會在 Market 準備完成後初始化選擇：父母／照護者優先，其後是前四個 Core 受眾。其他商品在 Core 準備完成後初始化。後續組別到齊時，不會覆蓋使用者的選擇。
+分數排序的是待探索假說，不是轉換機率或銷售提升。「啤酒與尿布」是比喻，不是經查證的零售歷史主張。簡報將展示結果標示為團隊回報，原始 JSON 與合格判定規則待補；提案公式不回溯重算歷史結果。
 
-目前沒有商品契合分數、新穎性分數、uplift 估計、向量檢索或加權排序公式。程式只檢查證據物件是否存在，沒有評估它的品質。[方法文件](docs/methodology.md)列出對應程式與後續研究工作。
+線上介面已顯示上述四個維度與 Final Score；目前 repo 的 `defaultSelection` 則只把具有證據物件的受眾排在前面，再取五個。這項介面預選規則與研究公式是不同層次。[方法、來源與現行程式 →](docs/methodology.md)
 
 ## 專案結構
 
@@ -168,28 +194,30 @@ preselected = 依 priority 穩定遞減排序後，取前 5 個
 
 ## 專案狀態
 
-目前版本已支援完整的商品頁審閱與編輯流程。尚無 Shopee 登入、Seller Center 整合、實際上架、評論 corpus、向量搜尋或完整 10K Explorer，也不衡量轉換率提升。
+目前可從三個來源理解專案：[簡報](https://claude.ai/code/artifact/460a9183-01f2-422d-bec5-9afa4009abb9)說明研究方法，[線上 demo](http://165.22.106.67/)展示已儲存的智慧插座體驗，本 repository 提供商品頁應用程式基準版。
 
-專案於建立七天後到期，回訪依賴同一瀏覽器保存的工作區金鑰。圖片連結使用隨機 ID，但不檢查工作區金鑰；持有有效連結的人可在到期前讀取圖片。公開部署前仍需決定存取控制與部署方式。[運作細節 →](docs/configuration.md)
+2026-09-12 核對時，遠端 `main` 為 `de9bb9a`，較新的部署行為尚無法對應到公開的原始碼版本。Repo 基準版未連接評論 corpus 或向量檢索；不宣稱已量測銷售提升，也未提供 Shopee 帳號整合或實際上架。
+
+程式設定為專案建立後保存七天，透過同瀏覽器工作區回訪。生成圖片的連結不要求工作區金鑰，隨專案到期。完成部署不等於已具備正式存取保障。[設定與保存方式 →](docs/configuration.md)
 
 ## Roadmap
 
-前兩項是已實作範圍，其餘由設計紀錄與本次文件盤點整理，尚無承諾時程。
+- [x] 商品頁工作區，支援比較、編輯、複製及單頁 JSON 匯出。
+- [x] 公開智慧插座 demo，已於部署介面觀察到既有 Explorer 分數與商品頁預覽。
+- [ ] 公開部署版本的程式碼、評估輸入與原始結果 JSON，讓流程可重現。
+- [ ] 確認 corpus 範圍、人物樣態集合的規模／版本及分群與離群值處理方法。
+- [ ] 記錄歷史評分與合格判定規則，另行評估提案排序公式。
+- [ ] 啟用並驗證部署版的商品網址匯入。
+- [ ] 公開真實模型延遲、成本與事實正確性量測。
+- [ ] 確認授權、部署／存取需求，並完成 demo 錄影。
 
-- [x] 商品輸入、示範受眾與 5–10 個可編輯商品頁預覽。
-- [x] 選用文案／圖片供應商、保存改稿與失敗恢復。
-- [ ] 補齊評論原文、來源連結與可重現的證據擷取流程。
-- [ ] 接入有版本的人物樣態集合、Persona Factory 與檢索流程。
-- [ ] 實作並評估完整 Explorer；先定義排序公式，再呈現分數。
-- [ ] 量測真實供應商的延遲、成本與事實正確性，公開評估方式。
-- [ ] 決定部署、存取控制與持久化儲存需求。
-- [ ] 確認專案授權並發布 demo 錄影。
+以上是後續方向，尚無承諾時程。
 
 ## 團隊與黑客松背景
 
-本專案是 Shopee 黑客松作品，程式位於 [c-cf 的 repository](https://github.com/c-cf/shopee-persona-engine)。第一版優先交付賣家的完整審閱流程：商品事實 → 選擇受眾 → 可編輯的模擬頁面。詳見[範圍決策](docs/adr/0002-hackathon-first-version.md)。
+依[團隊簡報](https://claude.ai/code/artifact/460a9183-01f2-422d-bec5-9afa4009abb9)，本專案為 **Shopee Hackathon 2026** 作品，原始碼位於 [c-cf/shopee-persona-engine](https://github.com/c-cf/shopee-persona-engine)。
 
-repo 尚未記載團隊名單、成員分工或活動屆次。目前可由[貢獻紀錄](https://github.com/c-cf/shopee-persona-engine/graphs/contributors)查看程式貢獻者，但不宜將其視為完整黑客松團隊名單。
+專案從「誰還需要它？」出發，經人物樣態探索，最後交付賣家能審閱的商品頁。團隊姓名與個別分工尚未記錄；[貢獻歷史](https://github.com/c-cf/shopee-persona-engine/graphs/contributors)可查看程式貢獻歸屬。
 
 ## 參與貢獻
 

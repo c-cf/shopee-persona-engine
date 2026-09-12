@@ -6,10 +6,10 @@
 
 | Document | Contents / 內容 |
 | --- | --- |
-| [Demo](demo.md) | Local walkthrough, screenshot provenance and recording plan／操作、截圖來源與錄影計畫 |
+| [Demo](demo.md) | Hosted Smart Plug and repository walkthroughs, capture provenance／線上智慧插座、repo 操作與截圖來源 |
 | [Configuration](configuration.md) | Provider settings, data handling and local operation／模型設定、資料處理與本機運作 |
 | [Architecture](architecture.md) | Modules, checkpoints and export contract／模組、進度檢查點與匯出契約 |
-| [Methodology](methodology.md) | Actual selection rule and research boundaries／實際預選規則與研究界線 |
+| [Methodology](methodology.md) | Pitch scoring formula, research workflow and baseline selection／簡報評分公式、研究流程與基準版預選 |
 | [Brand assets](assets/brand/README.md) | Logo, wordmark and README visuals／標誌、字標與首頁視覺 |
 | [Contributing](../CONTRIBUTING.md) | Change scope and relevant checks／修改範圍與驗證方式 |
 | [Homepage audit](homepage-audit.md) | Source audit, information architecture and verification／盤點、資訊架構與驗證 |

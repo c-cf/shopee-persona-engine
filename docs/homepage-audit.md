@@ -8,7 +8,27 @@
 
 **Scope:** documentation and visual assets; application behavior is unchanged.
 
-## Inventory / 現況
+## Pitch and deployment alignment / 簡報與部署對齊
+
+A subsequent review on 2026-09-12 inspected all eight slides of the
+[team deck](https://claude.ai/code/artifact/460a9183-01f2-422d-bec5-9afa4009abb9)
+and the [public deployment](http://165.22.106.67/). Both homepages now lead with
+“Who else needs it?”, use Smart Plug/aquarium as the main story, and explain the
+review → registry → pairing → scoring → listing method. The four-dimensional
+30/30/20/20 weighted geometric mean is included as the deck's proposed formula.
+
+The demo link was verified through the public UI: 15 Explorer personas and four
+sub-scores, with 10 saved listing previews. URL import was marked Coming Soon.
+No shared edits, new generation or persistence checks were performed. The deck's
+1,500 scale remains explicitly illustrative; the deployed historical-run claim is
+attributed to its UI. Remote main was still `de9bb9a`, and no published branch could
+be mapped to the newer deployed evaluation pipeline. The old 10K goal is retained
+only as history. Previous headphone screenshots are labeled repository-baseline
+captures and placed in a collapsed section.
+
+本次同步簡報主張、案例、1,500 示意規模及提案公式，加入可用的線上 demo；原始碼、簡報與部署觀察各自保留來源範圍。先前紀錄中的「無公開 demo」「未指定活動屆次」已由新來源更新。以下盤點保留為最初整理時的歷史快照。
+
+## Initial inventory / 初次盤點
 
 | Area | Finding / 發現 | Editorial decision / 文件處理 |
 | --- | --- | --- |
@@ -37,7 +57,7 @@ source was used as a structural reference, not as product claims or copied artwo
 
 The homepage follows the questions a new reader needs answered:
 
-1. **What is it?** Hero, one-sentence purpose and visible demo behavior.
+1. **What is it?** Hero, one-sentence purpose and visible demo behavior (initial layout).
 2. **Why use it?** The listing problem and the review workflow.
 3. **What will I see?** A real screenshot, sample scenario and its evidence limits.
 4. **How do I run it?** Keyless setup first, provider configuration as an option.
@@ -90,9 +110,9 @@ At the source commit above, using Node.js 26.5.0 and npm 11.17.0:
 ## Decisions still needed / 待確認事項
 
 - Maintainer choice of license for code and assets／程式與資產授權。
-- Verified team roster, roles and event edition／團隊、分工與活動屆次。
+- Verified team roster and roles／團隊與分工；活動名稱已依簡報補為 Shopee Hackathon 2026。
 - Review source text, product identity and links for the supplied summary／摘要的評論原文與商品來源。
-- Recording and any public demo URL／操作錄影與公開 demo。
+- Recording and continued public demo availability／操作錄影及公開 demo 的持續可用性。
 - Research ranking and evaluation design／研究排序及評估方式。
 
 These missing facts are stated in the deliverables; none were filled with invented

@@ -6,7 +6,7 @@ The mark uses a **P-shaped product loop with three outward strokes**, representi
 one product viewed through Core, Market and Explorer scenarios. It is an original
 project mark, not the Shopee shopping-bag logo. The hero uses warm paper, charcoal,
 orange, teal and muted violet to connect the product to its three audience groups.
-The editorial hierarchy takes cues from the user's
+The tagline follows the team deck’s “Who else needs it?”; the workflow illustrates the pitch research method, not only the checked-in runtime. The editorial hierarchy takes cues from the user's
 [Polish Open-Source Prose](https://github.com/ting-hong-shieh/polish-open-source-prose)
 reference; no reference artwork was copied.
 

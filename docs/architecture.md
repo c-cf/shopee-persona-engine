@@ -2,6 +2,16 @@
 
 [Docs](README.md) · [English](../README.md) · [繁體中文](../README.zh-TW.md)
 
+## Scope / 範圍
+
+This document describes repository baseline `de9bb9a`. The deck's review-to-registry
+and product–persona research workflow is described in [methodology](methodology.md).
+The public Smart Plug deployment exposes saved evaluation results beyond this
+baseline; its source revision was not available in the remote branches checked on
+2026-09-12. The module map below does not claim to describe that additional pipeline.
+
+此文件對應 repo 基準版。簡報研究方法另見方法文件；線上智慧插座評估超出此版範圍，尚待公開部署原始碼對應，不能將下列模組當成該研究管線的完整架構。
+
 ## Module map / 模組對照
 
 | Module | Responsibility / 責任 |

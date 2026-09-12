@@ -1,57 +1,77 @@
 <p align="center">
-  <img src="docs/assets/brand/hero.svg" alt="Persona Engine — one product, different reasons to buy. Product facts become audience scenarios and listing previews." width="100%">
+  <img src="docs/assets/brand/hero.svg" alt="Persona Engine — Who else needs it? Explore unexpected buyers, then write the listing that speaks to them." width="100%">
 </p>
 
 <p align="center">
-  <strong>English</strong> · <a href="README.zh-TW.md">繁體中文</a> · <a href="#demo">Demo</a> · <a href="#quick-start">Quick start</a> · <a href="docs/README.md">Docs</a>
+  <strong>English</strong> · <a href="README.zh-TW.md">繁體中文</a> · <a href="http://165.22.106.67/">Live demo</a> · <a href="https://claude.ai/code/artifact/460a9183-01f2-422d-bec5-9afa4009abb9">Pitch deck</a> · <a href="#quick-start">Quick start</a> · <a href="docs/README.md">Docs</a>
 </p>
 
 <p align="center">
   <a href="package.json"><img src="https://img.shields.io/badge/stack-TypeScript-3178c6?style=flat-square" alt="TypeScript frontend and backend"></a>
-  <a href="#quick-start"><img src="https://img.shields.io/badge/demo-no_API_key-26786f?style=flat-square" alt="Demo requires no API key"></a>
+  <a href="http://165.22.106.67/"><img src="https://img.shields.io/badge/demo-live-26786f?style=flat-square" alt="Open the live demo"></a>
   <a href="#license"><img src="https://img.shields.io/badge/license-not_specified-777777?style=flat-square" alt="License not specified"></a>
 </p>
 
-**Shopee Persona Engine helps sellers turn one product into 5–10 audience-specific listing previews.** Bring in product facts, choose audience scenarios, then compare, edit, favorite and copy candidate listings in a simulated Shopee layout.
+## Who else needs it?
 
-The current app runs locally with a Traditional Chinese interface. Audience discovery uses labeled demo scenarios. Copy works without an API key; model-written copy and generated scene images are optional.
+**Persona Engine explores buyers a seller might never have pictured, then turns those use cases into listings written for them.** Start with what the product can actually do, find a plausible job in someone else's daily life, and bring that insight back to the product page.
 
-## The problem
+Built for **Shopee Hackathon 2026**. [Try the live demo](http://165.22.106.67/) · [Read the pitch deck](https://claude.ai/code/artifact/460a9183-01f2-422d-bec5-9afa4009abb9)
 
-A listing can describe what a product is without showing how it fits a buyer's day. Sellers need a way to try different communication angles while keeping price, specifications and other product facts visible for review.
+## Same product. A different buyer.
 
-## The approach
+A feature-first smart-plug listing describes scheduling and remote power control. For an **aquarium keeper**, the angle becomes a daily rhythm for aquarium lights. The product is the same; the reason to care changes.
 
-Persona Engine puts those alternatives in the same workspace. Each selected audience gets its own title and description, with desktop and mobile previews and a comparison against another version or the original listing. Sellers review the content before copying it out. The app does not publish to Shopee.
+| Product | Unexpected buyer | Communication angle | Case status |
+| --- | --- | --- | --- |
+| Smart Plug | Aquarium keeper | A lighting routine for the tank, including days away | Team-reported result in the deck |
+| Open-ear headphones | Newborn caregiver | Listen to podcasts while staying aware of household sounds | Team scenario |
+| USB-C Hub | Mobile makeup artist | Shoot, back up and deliver on location | Team scenario |
 
-<img src="docs/assets/brand/workflow.svg" alt="Confirm product facts → explore 15 demo audiences → select 5–10 → generate copy → compare and edit" width="100%">
+These are the deck's examples. They are not sales-lift results or verified product photography. A smart plug controls power; it does not add monitoring, a camera or communication. Appliance compatibility and electrical ratings still need checking against the actual model.
+
+## How it works
+
+The pitch follows three steps:
+
+1. **Build people once.** Use review needs to form a shared persona registry: reviews → embeddings → clusters, with outliers retained for review → personas with contexts, jobs and source references.
+2. **Explore product × persona.** Ask an LLM for plausible uses within the product's capabilities, returning a story, four sub-scores and structured JSON for each pairing.
+3. **Bring it back to the listing.** Pick audiences, create one listing per audience, then compare, edit and copy. Product facts and price remain the common reference.
+
+<img src="docs/assets/brand/workflow.svg" alt="Review needs → persona registry → product pairing → exploration scores → listing previews" width="100%">
+
+The deck illustrates this with **1,500 personas** and cites **Amazon Reviews 2023 (McAuley Lab)**. Its appendix identifies that registry size, vectors and clusters as illustrative; corpus scope and validated registry size await confirmation. The live demo separately presents a saved Smart Plug run as 1,500 historical evaluations with 15 selected personas. See [methodology](docs/methodology.md) for the evidence and implementation boundaries.
 
 ## Demo
 
-Run the [local demo](#quick-start), click **「載入示範商品」** (Load demo product), then **「開始探索受眾」** (Explore audiences). Keep the five preselected directions and click **「生成 5 個商品頁」** (Generate 5 listing pages).
+**[Open the live demo →](http://165.22.106.67/)**
 
-The example uses open-ear headphones. The **parents/caregivers** direction illustrates a “Missed Buyer”: someone interested in listening while remaining aware of family sounds. It carries a **user-provided summary of 13 matching reviews, all marked Verified Purchase, for one representative product**. Review text, source links, brand and model have not been supplied; the app has not independently verified that summary. This is a communication hypothesis, not evidence of purchase intent for the current product.
+Click **「查看示範分析」** (View demo analysis) on the Amazon Smart Plug card. Inspect the 15 Explorer results and their four-dimensional scores, then click **「查看商品頁預覽」** (View listing previews) to open the saved listing workspace. At the 2026-09-12 check, 10 previews were ready.
 
-Brand, price and detailed specifications remain unspecified. The product illustration is a category illustration.
+The hosted entry point currently marks Shopee URL import **Coming Soon**. Use the saved analysis for the presentation walkthrough. Viewing existing results is not a fresh 1,500-persona run. Availability and saved-project expiry may change.
 
-![Actual local demo: parents/caregivers listing with audience context, original illustration and editable copy](docs/assets/screenshots/listing-workspace.png)
-
-*Captured from the local app with template copy and image generation disabled. The UI is in Traditional Chinese; the headphones shown are the bundled illustration.*
+The deck's aquarium example is the lead story; the visible saved run contains other Smart Plug contexts such as lighting schedules, hard-to-reach switches, travel and pet care. Do not assume every deck example appears in this saved selection.
 
 <details>
-<summary>Audience selection, original comparison and mobile preview</summary>
+<summary>Repository demo screenshots: the earlier headphone workflow</summary>
 
-![Fifteen demo audiences in Core, Market and Explorer groups](docs/assets/screenshots/audience-explorer.png)
+These screenshots show the runnable repository baseline, not the newer hosted Smart Plug run. They use template copy and the bundled headphone illustration, with image generation disabled.
 
-![Candidate listing beside the original product content](docs/assets/screenshots/compare-original.png)
+![Headphone listing workspace in the repository baseline](docs/assets/screenshots/listing-workspace.png)
 
-![Mobile-format listing within the desktop editing workspace](docs/assets/screenshots/mobile-preview.png)
+![Three groups of seeded audience scenarios in the repository baseline](docs/assets/screenshots/audience-explorer.png)
+
+![Candidate copy compared with the original](docs/assets/screenshots/compare-original.png)
+
+![Mobile listing format inside the editing workspace](docs/assets/screenshots/mobile-preview.png)
 
 </details>
 
-No hosted demo or recording is linked in this repository. See the [demo guide](docs/demo.md) for a walkthrough and the reserved GIF capture plan.
+[Demo walkthrough and capture provenance →](docs/demo.md)
 
 ## Quick start
+
+These commands run the source in this repository. Its built-in sample is open-ear headphones with seeded audiences; the hosted Smart Plug run and its evaluation data are not included in this checkout.
 
 Use **Node.js 24** and npm. The original project validation used Node.js 24; this documentation pass also ran the tests and build on Node.js 26.5.0.
 
@@ -64,7 +84,7 @@ npm run dev
 
 Open **[http://127.0.0.1:5173](http://127.0.0.1:5173)**. The API listens on port **3001**; Vite proxies `/api` to it. With neither provider key configured, the demo uses local copy templates and the original product image, with no paid model requests.
 
-For your own product, try a Taiwan Shopee URL or choose **「手動輸入」** (Manual input). Supply a title of at least 2 characters and a description of at least 8 characters. Price and image are optional; missing values stay visibly incomplete. URL parsing reads public metadata and may fail; use manual input when it does.
+In this repository build, try a Taiwan Shopee URL or choose **「手動輸入」** (Manual input). Supply a title of at least 2 characters and a description of at least 8 characters. Price and image are optional; missing values stay visibly incomplete. URL parsing reads public metadata and may fail; use manual input when it does.
 
 ### Optional models
 
@@ -88,19 +108,19 @@ After building, open **[http://127.0.0.1:3001](http://127.0.0.1:3001)**. Express
 
 ## Features
 
-| Capability | Current behavior |
-| --- | --- |
-| Product input | Taiwan Shopee public metadata, manual text and an optional PNG/JPG/WebP upload up to 1.3 MB |
-| Audience selection | Three groups of five demo scenarios; select 5–10 distinct audiences |
-| Listing generation | One title and description per audience; template copy or optional OpenRouter copy |
-| Audience images | Optional text-prompted OpenAI image per audience; copy becomes editable before the image finishes |
-| Review workspace | Desktop/mobile layouts; compare two variants or compare with the original |
-| Editing | Autosave, restore original copy, favorites and copy current text |
-| Reselection | Add or remove audiences; previously edited versions return when reselected |
-| Export | Copy the current page as JSON, including current text, product, audience and image metadata |
-| Recovery | Seven-day local project retention, same-browser return, persisted progress and retries for failed work |
+| Capability | Hosted demo | Runnable repository |
+| --- | --- | --- |
+| Audience discovery | Saved Smart Plug analysis: 15 Explorer personas with four sub-scores and Final Score | Three groups of five seeded scenarios; select 5–10 |
+| Product input | URL import marked Coming Soon | Public Taiwan Shopee metadata parser, manual text and image upload |
+| Listing workspace | 10 saved Smart Plug previews observed | Generate 5–10 titles/descriptions; compare desktop/mobile layouts |
+| Editing and export | Editing controls and single-page JSON export are visible | Autosave, restore, favorites, copy and JSON export implemented |
+| Models and recovery | Deployed provider configuration not verified | Optional OpenRouter copy, OpenAI scene images and separate retry checkpoints |
+
+The public deployment was inspected through its UI; editing, generation and persistence were not exercised against shared data. The repository's tests cover the source behavior described in [architecture](docs/architecture.md).
 
 ## Architecture
+
+The research workflow above describes the pitch. This diagram describes the **runnable repository baseline**; it does not claim to reproduce the deployed evaluation pipeline.
 
 ```mermaid
 flowchart LR
@@ -122,29 +142,35 @@ Generated images use product facts, audience context and listing text as prompts
 
 ## Persona Engine and Explorer Engine
 
-“Persona Engine” names the application. Its planned research pipeline is broader than the current demo implementation.
+**Persona Engine** is the complete product: understand potential buyers and turn the selected directions into listings. **Explorer Engine** is the product–persona pairing and scoring step. A reusable persona registry supplies contexts, jobs and source references rather than a list of identified customers.
 
-| Layer | Intended role | Implemented today |
-| --- | --- | --- |
-| Core | Suggest audiences directly related to the product's use | Five seeded scenarios |
-| Market | Surface needs supported by review evidence | Five seeded scenarios; one supplied evidence summary in the exact headphone demo |
-| Explorer | Explore less obvious contexts across a persona universe | Five seeded hypotheses; no 10K inference |
-| Persona Factory / Universe | Build a versioned collection of personas; original target: 10,000 | Not connected |
+Core, Market and Explorer remain the deck's broader audience categories. The public Smart Plug analysis currently shows **15 Explorer personas**; the repository baseline demonstrates five seeded scenarios in each of the three groups.
 
-The `core`, `market` and `explorer` group identifiers describe the demo's organization. They do not indicate that three research engines are running. [Methodology and evidence boundaries →](docs/methodology.md)
+The deck's 1,500-persona illustration is the current presentation scale. Older repository notes mention a 10,000-persona goal; that is historical planning, not a claim about the current registry or deployed run.
 
 ## Methodology and ranking formula
 
-The current code uses a **default-selection rule**, not a market ranking model:
+The deck proposes four dimensions for **exploration priority**:
+
+| Dimension | Weight | Question |
+| --- | --- | --- |
+| Product–Job Bridge | 30% | Can the product do the job? |
+| Beer–Diaper Index | 30% | Is the connection unexpected, yet plausible? |
+| Market Opportunity | 20% | How broad might the opportunity be? An LLM estimate. |
+| Story Hook | 20% | How vivid and memorable is the scene? |
+
+For sub-scores on a 0–100 scale, the proposed weighted geometric mean is:
 
 ```text
-priority(buyer) = 1 if buyer.evidence exists, otherwise 0
-preselected = first 5 of a stable descending sort by priority
+Final Score = 100 × (Bridge / 100)^0.30
+                  × (Beer–Diaper / 100)^0.30
+                  × (Market / 100)^0.20
+                  × (Hook / 100)^0.20
 ```
 
-Ties retain seed order. For the exact headphone demo, selection initializes after Market is ready: the parents/caregivers entry comes first, followed by the first four Core entries. For other products, it initializes after Core is ready. User changes are preserved as later groups arrive.
+This ranks hypotheses for exploration, not conversion probability or sales uplift. “Beer–diaper” is a metaphor, not a claim about verified retail history. The deck labels the displayed run results as team-reported, with raw JSON and qualification rules pending; the proposed formula does not rescore historical results.
 
-There is no implemented fit score, novelty score, uplift estimate, vector retrieval or weighted ranking formula. An evidence object receives priority because it exists, not because the app has graded its quality. The [methodology note](docs/methodology.md) records the code paths and research work still needed.
+The hosted UI displays these four dimensions and Final Score. The checked-in baseline's `defaultSelection` only prioritizes an existing evidence object before taking five entries; that UI preselection rule is separate from the research formula. [Methodology, sources and current code →](docs/methodology.md)
 
 ## Project structure
 
@@ -168,28 +194,30 @@ There is no implemented fit score, novelty score, uplift estimate, vector retrie
 
 ## Project status
 
-The current version supports the complete listing review and editing workflow. It has no Shopee login, Seller Center integration, live publishing, review corpus, vector search or complete 10K Explorer. It does not measure conversion lift.
+There are three sources to keep in view: the [pitch deck](https://claude.ai/code/artifact/460a9183-01f2-422d-bec5-9afa4009abb9) describes the research method, the [hosted demo](http://165.22.106.67/) shows the saved Smart Plug experience, and this repository provides the listing application baseline.
 
-Projects expire seven days after creation. Return access depends on the same browser's workspace key. Image links use random IDs but do not require that key; anyone who has a valid link can retrieve the image until expiry. Public hosting needs additional access and deployment decisions. [Operational details →](docs/configuration.md)
+At the 2026-09-12 check, remote `main` was `de9bb9a`; the newer hosted behavior could not be mapped to a published source revision. The repository baseline has no connected review corpus or vector retrieval. No measured sales uplift, Shopee account integration or live publishing is claimed.
+
+The source saves projects for seven days after creation, with same-browser workspace access. Generated image links do not require the workspace key and expire with the project. Hosting does not establish production access guarantees. [Configuration and storage →](docs/configuration.md)
 
 ## Roadmap
 
-The first two items reflect implemented scope. The remaining items are follow-up directions from the design notes and documentation audit, without committed dates.
+- [x] Listing workspace with comparison, editing, copying and single-page JSON export.
+- [x] Public Smart Plug demo with saved Explorer scores and listing previews, observed through the deployed UI.
+- [ ] Publish the deployed source revision, evaluation inputs and raw result JSON for reproducibility.
+- [ ] Confirm corpus scope, registry size/version and clustering/outlier methodology.
+- [ ] Document historical scoring and qualification rules; evaluate the proposed ranking separately.
+- [ ] Enable and validate product URL import in the hosted workflow.
+- [ ] Publish real-provider latency, cost and factual-accuracy measurements.
+- [ ] Confirm the project license, hosting/access requirements and recorded demo.
 
-- [x] Product input, demo audiences and 5–10 editable listing previews.
-- [x] Optional copy/image providers, saved edits and failure recovery.
-- [ ] Add review text, source links and reproducible evidence extraction.
-- [ ] Connect a versioned Persona Factory / Universe and retrieval pipeline.
-- [ ] Implement and evaluate the full Explorer; define any ranking formula before reporting scores.
-- [ ] Measure real-provider latency, cost and factual accuracy; publish the evaluation setup.
-- [ ] Decide hosting, access controls and durable storage requirements.
-- [ ] Confirm the project license and publish a recorded demo.
+These are follow-up directions, without committed dates.
 
 ## Team and hackathon
 
-Built as a Shopee hackathon project in the [c-cf repository](https://github.com/c-cf/shopee-persona-engine). The first version prioritizes the seller's complete review workflow: product facts → audience choices → editable previews. See [the scope decision](docs/adr/0002-hackathon-first-version.md).
+Built for **Shopee Hackathon 2026**, as identified in the [team's pitch deck](https://claude.ai/code/artifact/460a9183-01f2-422d-bec5-9afa4009abb9), with source in [c-cf/shopee-persona-engine](https://github.com/c-cf/shopee-persona-engine).
 
-The repository does not yet document a team roster, member roles or an event edition. The [contributor history](https://github.com/c-cf/shopee-persona-engine/graphs/contributors) is the available code attribution; it should not be treated as the full hackathon team roster.
+The project asks “Who else needs it?” and follows that question through persona exploration to a listing a seller can review. Team names and individual roles have not yet been documented; [contributor history](https://github.com/c-cf/shopee-persona-engine/graphs/contributors) records code attribution.
 
 ## Contributing
 
