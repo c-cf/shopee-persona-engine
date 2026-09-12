@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="400" viewBox="0 0 1280 400" role="img" aria-labelledby="title desc">
+<title id="title">Demo recording placeholder — no recording yet</title><desc id="desc">Reserved slot for an actual recording. Load product, choose audiences, compare and edit. 錄影預留位置，尚未錄製。</desc>
+<rect width="1280" height="400" rx="20" fill="#f7f4ec"/><rect x="28" y="28" width="1224" height="344" rx="12" fill="none" stroke="#b7b7a9" stroke-dasharray="8 8"/>
+<text x="640" y="145" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" letter-spacing="3" fill="#a44730">RECORDING SLOT · NOT YET RECORDED</text>
+<text x="640" y="205" text-anchor="middle" font-family="Arial,PingFang TC,sans-serif" font-size="34" font-weight="700" fill="#242825">Demo walkthrough / 操作錄影預留位置</text>
+<text x="640" y="255" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="22" fill="#66695e">Load product → Choose audiences → Compare &amp; edit</text>
+<text x="640" y="308" text-anchor="middle" font-family="Arial,PingFang TC,sans-serif" font-size="17" fill="#66695e">Placeholder only. Actual app screenshots are shown in the README. 尚未錄製，實際畫面請見 README。</text>
+</svg>
