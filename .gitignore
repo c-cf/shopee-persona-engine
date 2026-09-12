@@ -11,6 +11,8 @@ __pycache__/
 .env.*.local
 
 # Build output
+.data/
+.qa/
 dist/
 build/
 *.egg-info/
